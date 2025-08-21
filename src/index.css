@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-main-bg: #060709;
+  --text-regular: 2rem;
+  --color-bg-black-2: #111214;
+}
+
+@layer components {
+  .main-bg {
+    background: #7c3aed;
+    background: linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 1) 0%,
+      rgba(79, 70, 229, 1) 100%
+    );
+  }
+  .shadows{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+  }
+}
+
+
+@layer base{
+    html{
+        font-size: 62.7%;
+    }
+}
