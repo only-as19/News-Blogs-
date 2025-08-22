@@ -172,7 +172,6 @@ const News: React.FC = () => {
           </div>
         </div>
         <Modal show={showModal} article={selecetedArticle} onClose={()=> setShowModal(false)} />
-          <BookMark/>
         <div
           className="h-full bg-bg-black-2 rounded-2xl"
           style={{ width: "clamp(20rem,27cqi,28%)" }}

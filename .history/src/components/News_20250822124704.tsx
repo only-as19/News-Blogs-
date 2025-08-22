@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Weather, Calender,Modal,BookMark } from "./index";
+import { Weather, Calender,Modal,Boo } from "./index";
 import { faSearch, faBookmark } from "@fortawesome/free-solid-svg-icons";
 import userImage from "../assets/images/user.jpg";
 import noImage from "../assets/images/no-img.png"
@@ -172,7 +172,6 @@ const News: React.FC = () => {
           </div>
         </div>
         <Modal show={showModal} article={selecetedArticle} onClose={()=> setShowModal(false)} />
-          <BookMark/>
         <div
           className="h-full bg-bg-black-2 rounded-2xl"
           style={{ width: "clamp(20rem,27cqi,28%)" }}
