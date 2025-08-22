@@ -10,16 +10,16 @@ const Bookmarks = () => {
               <span className="absolute top-6 right-8 text-2xl text-gray-200 cursor-pointer">
                 <FontAwesomeIcon icon={faXmark} />
               </span>
-              <h2 className="text-6xl font-bold  mb-8 text-gray-200">Bookmarked News</h2>
-              <div className="flex flex-col gap-4 cursor-pointer">
-                <div className="flex justify-evenly gap-x-8 items-center">
+              <h2>Bookmarked News</h2>
+              <div>
+                <div>
                     <img src={demoImage} alt="" 
-                    className="h-28 w-28 rounded-2xl mr-4 object-cover"/>
-                    <h3 className="text-3xl font-semibold tracking-wide">
-                        Lorem ipsum dolor sit. Lorem ipsum dolor sit.
+                    className="h-28 w-[]"/>
+                    <h3>
+                        Lorem ipsum dolor sit.
                     </h3>
                     <span>
-                        <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC] cursor-pointer"/>
+                        <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC]"/>
                     </span>
                 </div>
               </div>
