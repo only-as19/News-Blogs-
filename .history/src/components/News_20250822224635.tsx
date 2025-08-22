@@ -49,8 +49,7 @@ const News: React.FC = () => {
         }
       });
 
-      const savedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || []
-      setBookmark(savedBookmarks)
+      const savedBookmarks = JSON.parse(localStorage.getItem("bookmae"))
 
       setHeadline(fetchedNews[0]);
 

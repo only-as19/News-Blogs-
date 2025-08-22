@@ -49,9 +49,6 @@ const News: React.FC = () => {
         }
       });
 
-      const savedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || []
-      setBookmark(savedBookmarks)
-
       setHeadline(fetchedNews[0]);
 
       setNews(fetchedNews.slice(1, 7));
@@ -83,7 +80,7 @@ const News: React.FC = () => {
       )
         ? prevBookmark.filter((bookmark) => bookmark.title !== article.title)
         : [...prevBookmark, article];
-        localStorage.setItem('bookmarks', JSON.stringify(updatedBookmark))
+        localStorage.setItem('bookmarks', JSON.)
         return updatedBookmark
     });
   };
