@@ -2,7 +2,7 @@ import {faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import demoImage from '../assets/images/demo.jpg'
-const Bookmarks = ({show,onClose,onSelectedArticle}) => {
+const Bookmarks = ({show,onClose}) => {
   if(!show){
     return null
   }

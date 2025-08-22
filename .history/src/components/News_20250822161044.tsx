@@ -73,7 +73,15 @@ const News: React.FC = () => {
     setShowModal(true);
   };
 
-  
+  const handleBookmarkClick = (article) => {
+    setBookmark((prevBookmark) => {
+      const updatedBookmark = prevBookmark.find(
+        (bookmark) => bookmark.title === article.title
+      )
+        ? prevBookmark.filter((bookmark) => bookmark.title !== article.title)
+        : [...prevBookmark, article];
+    });
+  };
 
   return (
     <div className="text-regular h-full w-full flex flex-col justify-between gap-y-8">
