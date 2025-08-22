@@ -2,7 +2,7 @@ import {faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import demoImage from '../assets/images/demo.jpg'
-const Bookmarks = ({show,onClose,Bookmark,DeleteBookmark}) => {
+const Bookmarks = ({show,onClose,,Bookmark}) => {
   if(!show){
     return null
   }
@@ -23,7 +23,7 @@ const Bookmarks = ({show,onClose,Bookmark,DeleteBookmark}) => {
                     <img src={bookmark.image} alt="" 
                     className="h-28 w-28 rounded-2xl mr-4 object-cover"/>
                     <h3 className="text-3xl font-semibold tracking-wide">
-                       {bookmark.title}
+                       {book}
                     </h3>
                     <span>
                         <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC] cursor-pointer"/>

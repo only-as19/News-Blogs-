@@ -143,7 +143,7 @@ const News: React.FC = () => {
               >
                 Bookmarks
                 {bookmark.length === 0 ? (
-                  <FontAwesomeIcon
+                  <FontAwesomeIcon {icon={bo}}
                     icon={BookmarkRegular}
                     className="text-2xl"
                   />
@@ -203,10 +203,6 @@ const News: React.FC = () => {
                     <FontAwesomeIcon
                       icon={faBookmark}
                       className="absolute bottom-3 right-3 cursor-pointer"
-                       onClick={(e)=>{
-                    e.stopPropagation()
-                    handleBookmarkClick(article)
-                  }}
                     />
                   </h3>
                 </div>
@@ -224,7 +220,6 @@ const News: React.FC = () => {
           onSelectedArticle={handleArticleClick}
           onClose={() => setShowBookmark(false)}
           Bookmark={bookmark}
-          DeleteBookmark={handleBookmarkClick}
         />
         <div
           className="h-full bg-bg-black-2 rounded-2xl"

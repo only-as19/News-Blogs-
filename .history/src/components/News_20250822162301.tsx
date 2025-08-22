@@ -80,7 +80,6 @@ const News: React.FC = () => {
       )
         ? prevBookmark.filter((bookmark) => bookmark.title !== article.title)
         : [...prevBookmark, article];
-        return updatedBookmark
     });
   };
 
@@ -178,8 +177,7 @@ const News: React.FC = () => {
                   icon={faBookmark}
                   className="absolute bottom-3 right-3 cursor-pointer"
                   onClick={(e)=>{
-                    e.stopPropagation()
-                    handleBookmarkClick(headline)
+                    e.p
                   }}
                 />
               </h2>
@@ -203,10 +201,6 @@ const News: React.FC = () => {
                     <FontAwesomeIcon
                       icon={faBookmark}
                       className="absolute bottom-3 right-3 cursor-pointer"
-                       onClick={(e)=>{
-                    e.stopPropagation()
-                    handleBookmarkClick(article)
-                  }}
                     />
                   </h3>
                 </div>
@@ -224,7 +218,6 @@ const News: React.FC = () => {
           onSelectedArticle={handleArticleClick}
           onClose={() => setShowBookmark(false)}
           Bookmark={bookmark}
-          DeleteBookmark={handleBookmarkClick}
         />
         <div
           className="h-full bg-bg-black-2 rounded-2xl"

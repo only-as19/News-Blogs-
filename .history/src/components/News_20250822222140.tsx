@@ -224,7 +224,7 @@ const News: React.FC = () => {
           onSelectedArticle={handleArticleClick}
           onClose={() => setShowBookmark(false)}
           Bookmark={bookmark}
-          DeleteBookmark={handleBookmarkClick}
+          DeleteBookmark
         />
         <div
           className="h-full bg-bg-black-2 rounded-2xl"

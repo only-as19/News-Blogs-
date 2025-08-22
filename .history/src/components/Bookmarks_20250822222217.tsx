@@ -26,7 +26,8 @@ const Bookmarks = ({show,onClose,Bookmark,DeleteBookmark}) => {
                        {bookmark.title}
                     </h3>
                     <span>
-                        <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC] cursor-pointer"/>
+                        <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC] cursor-pointer"
+                        onClick={handleBo}/>
                     </span>
                 </div>
               </div>

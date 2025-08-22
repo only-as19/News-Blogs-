@@ -2,7 +2,7 @@ import {faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import demoImage from '../assets/images/demo.jpg'
-const Bookmarks = ({show,onClose,Bookmark,DeleteBookmark}) => {
+const Bookmarks = ({show,onClose,,Bookmark}) => {
   if(!show){
     return null
   }
@@ -20,10 +20,10 @@ const Bookmarks = ({show,onClose,Bookmark,DeleteBookmark}) => {
                     <h2 className="text-6xl font-bold  mb-8 text-gray-200">Bookmarked News</h2>
               <div className="flex flex-col gap-4 cursor-pointer">
                 <div className="flex justify-evenly gap-x-8 items-center">
-                    <img src={bookmark.image} alt="" 
+                    <img src={bookmark} alt="" 
                     className="h-28 w-28 rounded-2xl mr-4 object-cover"/>
                     <h3 className="text-3xl font-semibold tracking-wide">
-                       {bookmark.title}
+                        Lorem ipsum dolor sit. Lorem ipsum dolor sit.
                     </h3>
                     <span>
                         <FontAwesomeIcon icon={faCircleXmark} className="text-[#74C0FC] cursor-pointer"/>
