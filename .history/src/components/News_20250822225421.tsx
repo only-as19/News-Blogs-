@@ -49,9 +49,8 @@ const News: React.FC = () => {
         }
       });
 
-      const savedBookmarks =
-        JSON.parse(localStorage.getItem("bookmarks")) || [];
-      setBookmark(savedBookmarks);
+      const savedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || []
+      setBookmark(savedBookmarks)
 
       setHeadline(fetchedNews[0]);
 
@@ -84,8 +83,8 @@ const News: React.FC = () => {
       )
         ? prevBookmark.filter((bookmark) => bookmark.title !== article.title)
         : [...prevBookmark, article];
-      localStorage.setItem("bookmarks", JSON.stringify(updatedBookmark));
-      return updatedBookmark;
+        localStorage.setItem('bookmarks', JSON.stringify(updatedBookmark))
+        return updatedBookmark
     });
   };
 
@@ -179,25 +178,15 @@ const News: React.FC = () => {
              left-0 bottom-0 font-bold py-4 pr-12 pl-4 bg-black/25 text-gray-200 rounded-2xl"
               >
                 {headline.title}
-                {bookmark.find((mark) => mark.title === headline.title) ? (
-                  <FontAwesomeIcon
-                    icon={faBookmark}
-                    className="absolute bottom-3 right-3 cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleBookmarkClick(headline);
-                    }}
-                  />
-                ) : (
-                  <FontAwesomeIcon
-                    icon={BookmarkRegular}
-                    className="absolute bottom-3 right-3 cursor-pointer"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleBookmarkClick(headline);
-                    }}
-                  />
-                )}
+                {bookmark}
+                <FontAwesomeIcon
+                  icon={faBookmark}
+                  className="absolute bottom-3 right-3 cursor-pointer"
+                  onClick={(e)=>{
+                    e.stopPropagation()
+                    handleBookmarkClick(headline)
+                  }}
+                />
               </h2>
             </div>
           )}
@@ -216,25 +205,14 @@ const News: React.FC = () => {
                   />
                   <h3 className="absolute bottom-0 left-0 py-4 pr-10 pl-4 text-lg font-bold bg-black/70">
                     {article.title}
-                    {bookmark.find((mark) => mark.title === article.title) ? (
-                      <FontAwesomeIcon
-                        icon={faBookmark}
-                        className="absolute bottom-3 right-3 cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleBookmarkClick(article);
-                        }}
-                      />
-                    ) : (
-                      <FontAwesomeIcon
-                        icon={BookmarkRegular}
-                        className="absolute bottom-3 right-3 cursor-pointer"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleBookmarkClick(article);
-                        }}
-                      />
-                    )}
+                    <FontAwesomeIcon
+                      icon={faBookmark}
+                      className="absolute bottom-3 right-3 cursor-pointer"
+                       onClick={(e)=>{
+                    e.stopPropagation()
+                    handleBookmarkClick(article)
+                  }}
+                    />
                   </h3>
                 </div>
               );

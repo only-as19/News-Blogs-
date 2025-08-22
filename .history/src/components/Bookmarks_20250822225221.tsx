@@ -22,7 +22,7 @@ const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) 
             <div key={index} className="flex flex-col gap-4 cursor-pointer mb-4">
               <div className="flex justify-evenly gap-x-8 items-center"
               onClick={()=>{
-                onClose()
+                onc
                 onSelectedArticle(bookmark)}}>
                 <img src={bookmark.image} alt="" 
                 className="h-28 w-28 rounded-2xl mr-4 object-cover"/>
@@ -36,7 +36,6 @@ const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) 
                     onClick={(e) => {
                       e.stopPropagation()
                       DeleteBookmark(bookmark)
-                      
                     }}
                   />
                 </span>

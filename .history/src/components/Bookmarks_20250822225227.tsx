@@ -36,7 +36,6 @@ const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) 
                     onClick={(e) => {
                       e.stopPropagation()
                       DeleteBookmark(bookmark)
-                      
                     }}
                   />
                 </span>
