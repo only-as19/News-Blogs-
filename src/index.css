@@ -4,6 +4,7 @@
   --color-main-bg: #060709;
   --text-regular: 2rem;
   --color-bg-black-2: #111214;
+  --color-highlight:  var(--color-gray-200) ;
 }
 
 @layer components {
@@ -23,6 +24,6 @@
 
 @layer base{
     html{
-        font-size: 62.7%;
+        font-size: 62%;
     }
 }
