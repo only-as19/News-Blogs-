@@ -24,6 +24,8 @@ const Calender: React.FC = () => {
   const daysInMonth = new Date(currnetYear, currnetMonth + 1, 0).getDate()
   const fisrtDayOfMonth = new Date(currnetYear, currnetMonth, 1).getDay()
 
+  
+
   return (
     <div className="w-full min-w-112 bg-bg-black-2 rounded-2xl h-[calc(55%-2rem)] p-6 grid place-items-center">
       <div className="w-full flex justify-between items-center pl-4 mb-4 gap-x-4">
@@ -60,7 +62,7 @@ const Calender: React.FC = () => {
           ))
         }
         {[...Array(daysInMonth).keys()].map(day=>(
-           <span key={day+1} className=" w-[calc(100%/7)] text-xl text-zinc-500 flex justify-center aspect-1/1 items-center cursor-pointer">
+           <span key={day+1} className={` w-[calc(100%/7)]  flex justify-center aspect-square items-center cursor-pointer ${day+1 === currentDate.getDay()  && currnetMonth === currentDate.getMonth() && currnetYear === currentDate.getFullYear() ? "text-2xl main-bg text-white rounded-full":"text-xl text-zinc-500"}`}>
           {day+1}
         </span>
         ))}
