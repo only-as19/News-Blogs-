@@ -24,7 +24,22 @@ const Calender: React.FC = () => {
   const daysInMonth = new Date(currnetYear, currnetMonth + 1, 0).getDate()
   const fisrtDayOfMonth = new Date(currnetYear, currnetMonth, 1).getDay()
 
-  
+  const prevMonth = ()=>{
+    setCurrentMonth(prevMonth => (
+      prevMonth === 0 ? 11 : prevMonth - 1
+    ))
+    setCurrentaYear(prevYear =>(
+      currnetMonth === 11 ? prevYear - 1 : prevYear
+    ))
+  }
+  const nextMonth = ()=>{
+    setCurrentMonth(prevMonth => (
+      prevMonth === 0 ? 11 : prevMonth + 1
+    ))
+    setCurrentaYear(prevYear =>(
+      currnetMonth === 11 ? prevYear + 1 : prevYear
+    ))
+  }
 
   return (
     <div className="w-full min-w-112 bg-bg-black-2 rounded-2xl h-[calc(55%-2rem)] p-6 grid place-items-center">
@@ -34,10 +49,12 @@ const Calender: React.FC = () => {
         </h2>
         <h2 className="text-3xl font-bold text-highlight">{currnetYear}</h2>
         <div className="flex ml-auto gap-x-4">
-          <div className="w-14 h-14 flex justify-center items-center cursor-pointer text-3xl bg-[#2c3542] rounded-[50%]">
+          <div className="w-14 h-14 flex justify-center items-center cursor-pointer text-3xl bg-[#2c3542] rounded-[50%]"
+          onClick={prevMonth}>
             <i className="bx bx-chevron-left text-[#b88efc]"></i>
           </div>
-          <div className="w-14 h-14 flex justify-center items-center cursor-pointer text-3xl bg-[#2c3542] rounded-[50%]">
+          <div className="w-14 h-14 flex justify-center items-center cursor-pointer text-3xl bg-[#2c3542] rounded-[50%]"
+          onClick={nextMonth}>
             <i className="bx bx-chevron-right text-[#b88efc]"></i>
           </div>
         </div>
