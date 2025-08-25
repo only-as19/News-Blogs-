@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Calender: React.FC = () => {
+  const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const months = [
+  'January', 
+  'February', 
+  'March', 
+  'April', 
+  'May', 
+  'June', 
+  'July', 
+  'August', 
+  'September', 
+  'October', 
+  'November', 
+  'December'
+];
+
+const currentDate =  new Date()
+
+const [currnetMonth,setCurrentMonth] =  useState(currentDate.getMonth)
+const [currnetYear,setCurrentaYear] =  useState(currentDate.getFullYear)
+const daysInMonth = new Date(currnetYear,currnetMonth+1,0).getDate
+const fisrtDayOfMonth = new Date(currnetYear,currnetMonth,1)
+
+
+
   return (
     <div className="w-full min-w-112 bg-bg-black-2 rounded-2xl h-[calc(55%-2rem)] p-6 grid place-items-center">
       <div className="w-full flex justify-between items-center pl-4 mb-4 gap-x-4">
