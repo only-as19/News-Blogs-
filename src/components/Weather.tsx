@@ -9,44 +9,44 @@ const Weather: React.FC = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
 
-  useEffect(()=>{
-    const fetachDefaultLocation = async ()=>{
-      const defaultLocation = "Karachi"
+  useEffect(() => {
+    const fetachDefaultLocation = async () => {
+      const defaultLocation = "Karachi";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
       const response = await axios.get(url);
-      setData(response.data)
-    }
-    fetachDefaultLocation()
-
-  },[])
+      setData(response.data);
+    };
+    fetachDefaultLocation();
+  }, []);
 
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
     try {
       const response = await axios.get(url);
-      if(response.data.cod !== 200){
+      if (response.data.cod !== 200) {
         setData({
-          notFound:true
-        })
-      }else{
+          notFound: true,
+        });
+      } else {
         setData(response.data);
         setLocation("");
       }
-    }
-    catch(error){
-      if(error.response && error.response.status === 400){
+    } catch (error) {
+      if (error.response && error.response.status === 404) {
         setData({
-          notFound:true
-        })
-      }else{
-        console.error("An unexpected error occured",error)
+          notFound: true,
+        });
+      } else {
+        console.error("An unexpected error occured", error);
       }
     }
-    
-    
-    
-
   };
+
+  const onKeyDown = (e)=>{
+    if(e.key==='Enter'){
+      search()
+    }
+  }
 
   const handleLocation = (e) => {
     setLocation(e.target.value);
@@ -68,6 +68,7 @@ const Weather: React.FC = () => {
             name="location"
             value={location}
             onChange={handleLocation}
+            onKeyDown={onKeyDown}
             placeholder="Enter Location"
             className="bg-transparent border-0 border-b-2 border-b-gray-400 outline-none text-2xl text-highlight"
             style={{ width: "clamp(15rem,14cqi,25rem)" }}
@@ -79,18 +80,22 @@ const Weather: React.FC = () => {
           />
         </div>
       </div>
-      <div className="flex justify-center items-center gap-y-4 flex-col">
-        {/* <i className="bxr  bx-sun text-[5rem] text-[#ffc87c]"></i> */}
-        {data.weather?.[0]?.icon ? (
-          <img
-            src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-            alt="weather icon"
-            className="w-20 h-20"
-          />
-        ) : null}
-        <div>{data.weather ? data.weather[0].main : null}</div>
-        <div>{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
-      </div>
+      {data.notFound ? (
+        <div className="text-2xl mb-40">Not Found 🫡</div>
+      ) : (
+        <div className="flex justify-center items-center gap-y-4 flex-col">
+          {/* <i className="bxr  bx-sun text-[5rem] text-[#ffc87c]"></i> */}
+          {data.weather?.[0]?.icon ? (
+            <img
+              src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+              alt="weather icon"
+              className="w-20 h-20"
+            />
+          ) : null}
+          <div>{data.weather ? data.weather[0].main : null}</div>
+          <div>{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
+        </div>
+      )}
     </div>
   );
 };
