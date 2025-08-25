@@ -3,11 +3,22 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 const Weather: React.FC = () => {
   const [data, setData] = useState({});
   const [location, setLocation] = useState("");
+
+  useEffect(()=>{
+    const defaultLocation = "Karachi"
+    const fetachDefaultLocation = async ()=>{
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
+      const response = await axios.get(url);
+      setData(response.data)
+    }
+    fetachDefaultLocation()
+
+  },[])
 
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
