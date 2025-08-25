@@ -10,8 +10,8 @@ const Weather: React.FC = () => {
   const [location, setLocation] = useState("");
 
   useEffect(()=>{
-    const defaultLocation = "Karachi"
     const fetachDefaultLocation = async ()=>{
+      const defaultLocation = "Karachi"
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
       const response = await axios.get(url);
       setData(response.data)
@@ -22,11 +22,30 @@ const Weather: React.FC = () => {
 
   const search = async () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=Metric&appid=cdabf15c158ce52d0ea6f75327c25a21`;
+    try {
+      const response = await axios.get(url);
+      if(response.data.cod !== 200){
+        setData({
+          notFound:true
+        })
+      }else{
+        setData(response.data);
+        setLocation("");
+      }
+    }
+    catch(error){
+      if(error.response && error.response.status === 400){
+        setData({
+          notFound:true
+        })
+      }else{
+        console.error("An unexpected error occured",error)
+      }
+    }
+    
+    
+    
 
-    const response = await axios.get(url);
-    setData(response.data);
-    setLocation("");
-    console.log(location);
   };
 
   const handleLocation = (e) => {
