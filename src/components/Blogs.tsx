@@ -14,7 +14,19 @@ const Blogs = () => {
         />
       </div>
       <div className="w-1/2 h-full flex justify-center items-center relative">
-        <button className="main-bg aspect-4/1 text-3xl rounded-[5rem] font-bold cursor-pointer uppercase text-shadow-2xs active:translate-y-1" style={{width:'clamp(15rem,16cqi,30rem)'}}>Create a new Post</button>
+        {/* <button className="main-bg aspect-4/1 text-3xl rounded-[5rem] font-bold cursor-pointer uppercase text-shadow-2xs active:translate-y-1" style={{width:'clamp(15rem,16cqi,30rem)'}}>Create a new Post</button> */}
+        <div>
+          <form>
+            <div>
+              <label htmlFor="file-upload">
+            <i className='bxr  bx-folder-up-arrow'  ></i> 
+              </label>
+              <input type="file" id="file-upload" />
+            </div>
+            <input type="text" placeholder="Add Title ( Max 60 characters)"/>
+            <textarea placeholder="Add Text"></textarea>
+          </form>
+        </div>
         <button className="absolute top-12 right-10 flex justify-center items-center text-5xl cursor-pointer">
           <span>Back</span>
           <span className="flex items-center">
