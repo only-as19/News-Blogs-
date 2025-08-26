@@ -266,11 +266,11 @@ const News: React.FC = ({onShowBlogs}) => {
           <Calender />
         </div>
       </div>
-      <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl">
-        <p>
-          <span>News & Blogs</span>
+      <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl flex items-center justify-between px-16">
+        <p className="text-xl font-light">
+          <span className="font-bold text-[2rem]">News & Blogs</span>
         </p>
-        <p>
+        <p className="text-xl font-light">
           &copy; All rights reserved by codes and words.
         </p>
       </footer>

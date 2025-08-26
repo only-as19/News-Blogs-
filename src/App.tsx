@@ -3,7 +3,7 @@ import { useState } from "react"
 
 const App:React.FC  = ()=> {
   const[showNews,setShowNews] = useState(true)
-  const[showBlogs,setShowBlogs] = useState(true)
+  const[showBlogs,setShowBlogs] = useState(false)
 
   const handleShowNews = ()=>{
     setShowNews(true)
