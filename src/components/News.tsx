@@ -33,11 +33,11 @@ const News: React.FC = () => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      // let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
 
-      // if (searchQuery) {
-      //   url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
-      // }
+      if (searchQuery) {
+        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      }
 
       const response = await axios.get(url);
 
