@@ -20,7 +20,7 @@ const categories = [
   "nation",
 ];
 
-const News: React.FC = () => {
+const News: React.FC = ({onShowBlogs}) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
   const [selecetedCategory, setSelecetedCategory] = useState("general");
@@ -114,7 +114,9 @@ const News: React.FC = () => {
       </header>
       <div className="h-[calc(100%-16rem)]  flex gap-x-8 px-8">
         <div className="w-68 h-full flex flex-col gap-y-8 ">
-          <div className="w-full h-1/5 bg-bg-black-2 rounded-2xl flex justify-center items-center flex-col gap-2 cursor-pointer">
+          <div className="w-full h-1/5 bg-bg-black-2 rounded-2xl flex justify-center items-center flex-col gap-2 cursor-pointer"
+          onClick={onShowBlogs}
+          >
             <img
               src={userImage}
               alt=""
@@ -264,7 +266,9 @@ const News: React.FC = () => {
           <Calender />
         </div>
       </div>
-      <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl">Footer</footer>
+      <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl">
+        
+      </footer>
     </div>
   );
 };
