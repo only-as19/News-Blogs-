@@ -267,7 +267,12 @@ const News: React.FC = ({onShowBlogs}) => {
         </div>
       </div>
       <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl">
-        
+        <p>
+          <span>News & Blogs</span>
+        </p>
+        <p>
+          &copy; All rights reserved by codes and words.
+        </p>
       </footer>
     </div>
   );
