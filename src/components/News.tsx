@@ -7,7 +7,7 @@ import userImage from "../assets/images/user.jpg";
 import noImage from "../assets/images/no-img.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import blog1 from "../assets/images/blog1.jpg"
+import blog1 from "../assets/images/blog1.jpg";
 
 const categories = [
   "general",
@@ -21,7 +21,7 @@ const categories = [
   "nation",
 ];
 
-const News: React.FC = ({onShowBlogs}) => {
+const News: React.FC = ({ onShowBlogs,blogs }) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
   const [selecetedCategory, setSelecetedCategory] = useState("general");
@@ -115,8 +115,9 @@ const News: React.FC = ({onShowBlogs}) => {
       </header>
       <div className="h-[calc(100%-16rem)]  flex gap-x-8 px-8">
         <div className="w-68 h-full flex flex-col gap-y-8 ">
-          <div className="w-full h-1/5 bg-bg-black-2 rounded-2xl flex justify-center items-center flex-col gap-2 cursor-pointer"
-          onClick={onShowBlogs}
+          <div
+            className="w-full h-1/5 bg-bg-black-2 rounded-2xl flex justify-center items-center flex-col gap-2 cursor-pointer"
+            onClick={onShowBlogs}
           >
             <img
               src={userImage}
@@ -260,37 +261,31 @@ const News: React.FC = ({onShowBlogs}) => {
           className="h-full bg-bg-black-2 rounded-2xl flex flex-col gap-y-12 pb-8"
           style={{ width: "clamp(20rem,27cqi,28%)" }}
         >
-         <div>
-          <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
-          <div className="flex flex-wrap gap-5 p-5 justify-between">
-            <div className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
-              <img src={blog1} alt="" 
-              className="h-full w-full object-cover rounded-2xl opacity-50"/>
-              <h3 className="absolute bottom-0 left-0 p-2 bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">lorem Lorem ipsum dolor sit.</h3>
-              <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
-                <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
-                  <i className='bxr  bx-edit'  ></i>  
-                </button> 
-                <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
-                  <i className='bxr  bx-x-circle'  ></i>  
-                </button> 
+          <div>
+            <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
+            <div className="flex flex-wrap gap-5 p-5 justify-between">
+              {blogs.map((blog,index)=>(
+              <div className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="h-full w-full object-cover rounded-2xl opacity-50"
+                />
+                <h3 className="absolute bottom-0 left-0 p-2 bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">
+                  {blog.title}
+                </h3>
+                <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
+                  <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
+                    <i className="bxr  bx-edit"></i>
+                  </button>
+                  <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
+                    <i className="bxr  bx-x-circle"></i>
+                  </button>
+                </div>
               </div>
-            </div>
-                        <div className="flex-[0_1_calc(49%-0.5rem)] rounded-2xl ">
-              <img src={blog1} alt="" 
-              className="w-64"/>
-              <h3 className="font-bold text-[2rem] tracking-wide">lorem</h3>
-              <div>
-                <button>
-                  <i className='bxr  bx-edit'  ></i>  
-                </button> 
-                <button>
-                  <i className='bxr  bx-x-circle'  ></i>  
-                </button> 
-              </div>
+              ))}
             </div>
           </div>
-         </div>
         </div>
         <div className="flex-1 flex flex-col gap-y-8">
           <Weather />
