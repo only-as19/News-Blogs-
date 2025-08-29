@@ -7,6 +7,7 @@ import userImage from "../assets/images/user.jpg";
 import noImage from "../assets/images/no-img.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import blog1 from "../assets/images/blog1.jpg"
 
 const categories = [
   "general",
@@ -256,10 +257,27 @@ const News: React.FC = ({onShowBlogs}) => {
           DeleteBookmark={handleBookmarkClick}
         />
         <div
-          className="h-full bg-bg-black-2 rounded-2xl"
+          className="h-full bg-bg-black-2 rounded-2xl flex flex-col gap-y-12 pb-"
           style={{ width: "clamp(20rem,27cqi,28%)" }}
         >
-          Blogs
+         <div>
+          <h1 className="">My Blogs</h1>
+          <div>
+            <div>
+              <img src={blog1} alt="" 
+              className=""/>
+              <h3>lorem</h3>
+              <div>
+                <button>
+                  <i className='bxr  bx-edit'  ></i>  
+                </button> 
+                <button>
+                  <i className='bxr  bx-x-circle'  ></i>  
+                </button> 
+              </div>
+            </div>
+          </div>
+         </div>
         </div>
         <div className="flex-1 flex flex-col gap-y-8">
           <Weather />
