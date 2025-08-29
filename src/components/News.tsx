@@ -261,12 +261,25 @@ const News: React.FC = ({onShowBlogs}) => {
           style={{ width: "clamp(20rem,27cqi,28%)" }}
         >
          <div>
-          <h1 className="">My Blogs</h1>
-          <div>
-            <div>
+          <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
+          <div className="flex flex-wrap gap-5 p-5 justify-between">
+            <div className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
               <img src={blog1} alt="" 
-              className=""/>
-              <h3>lorem</h3>
+              className="h-full w-full object-cover rounded-2xl opacity-50"/>
+              <h3 className="absolute bottom-0 left-0 p-2 bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">lorem Lorem ipsum dolor sit.</h3>
+              <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
+                <button className="">
+                  <i className='bxr  bx-edit'  ></i>  
+                </button> 
+                <button>
+                  <i className='bxr  bx-x-circle'  ></i>  
+                </button> 
+              </div>
+            </div>
+                        <div className="flex-[0_1_calc(49%-0.5rem)] rounded-2xl ">
+              <img src={blog1} alt="" 
+              className="w-64"/>
+              <h3 className="font-bold text-[2rem] tracking-wide">lorem</h3>
               <div>
                 <button>
                   <i className='bxr  bx-edit'  ></i>  
