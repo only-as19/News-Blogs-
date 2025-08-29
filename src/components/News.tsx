@@ -90,6 +90,7 @@ const News: React.FC = ({ onShowBlogs,blogs }) => {
     });
   };
 
+  console.log(blogs)
   return (
     <div className="text-regular h-full w-full flex flex-col justify-between gap-y-8">
       <header className="w-full min-h-28 bg-bg-black-2 rounded-t-2xl flex justify-between px-16 items-center">
@@ -265,13 +266,13 @@ const News: React.FC = ({ onShowBlogs,blogs }) => {
             <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
             <div className="flex flex-wrap gap-5 p-5 justify-between">
               {blogs.map((blog,index)=>(
-              <div className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
+              <div key={index} className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
                 <img
                   src={blog.image}
                   alt={blog.title}
                   className="h-full w-full object-cover rounded-2xl opacity-50"
                 />
-                <h3 className="absolute bottom-0 left-0 p-2 bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">
+                <h3 className="absolute bottom-0 left-0 p-2 rounded-b-2xl bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">
                   {blog.title}
                 </h3>
                 <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
