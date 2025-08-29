@@ -257,7 +257,7 @@ const News: React.FC = ({onShowBlogs}) => {
           DeleteBookmark={handleBookmarkClick}
         />
         <div
-          className="h-full bg-bg-black-2 rounded-2xl flex flex-col gap-y-12 pb-"
+          className="h-full bg-bg-black-2 rounded-2xl flex flex-col gap-y-12 pb-8"
           style={{ width: "clamp(20rem,27cqi,28%)" }}
         >
          <div>
@@ -268,10 +268,10 @@ const News: React.FC = ({onShowBlogs}) => {
               className="h-full w-full object-cover rounded-2xl opacity-50"/>
               <h3 className="absolute bottom-0 left-0 p-2 bg-black/40 text-2xl leading-5 uppercacse font-light tracking-wide break-words">lorem Lorem ipsum dolor sit.</h3>
               <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
-                <button className="">
+                <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
                   <i className='bxr  bx-edit'  ></i>  
                 </button> 
-                <button>
+                <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
                   <i className='bxr  bx-x-circle'  ></i>  
                 </button> 
               </div>
