@@ -1,8 +1,42 @@
 import userImage from "../assets/images/user.jpg";
 import bgImage from "../assets/images/bg.jpg";
 import { useState } from "react";
-const Blogs = ({ onShowNews }) => {
+const Blogs = ({ onShowNews,setBlogs }) => {
   const [showPostForm, setShowForm] = useState(false);
+  const[image,setImage] = useState(null)
+  const [title,setTitle] = useState("")
+  const [content,setContent]= useState("")
+
+  const handleImageChange = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            const reader = new FileReader()
+            reader.onloadend = () => {
+                setImage(reader.result)
+            }
+            reader.readAsDataURL(e.target.files[0])
+        }
+    }
+
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    const newBlog = {
+      image,
+      title,
+      content
+    }
+    setBlogs(newBlog)
+    setImage(null)
+    setTitle("")
+    setContent("")
+    setShowForm(false)
+  }
+  
+
+
+
+
+
+  
   return (
     <div className="flex w-full h-full">
       <div
@@ -33,13 +67,18 @@ const Blogs = ({ onShowNews }) => {
                   <i className="bxr  bx-folder-up-arrow text-5xl"></i> Upload
                   image
                 </label>
-                <input type="file" id="file-upload" className="hidden" />
+                <input type="file" id="file-upload" className="hidden" 
+                onChange={handleImageChange}
+                />
               </div>
               <input
                 type="text"
                 placeholder="Add Title ( Max 60 characters)"
                 style={{ width: "clamp(15rem,25cqi,45rem)" }}
                 className="border-b-2 border-b-[#b88cfe] py-8 text-3xl text-highlight outline-none placeholder:text-2xl placeholder:text-[#b88efc] placeholder:opacity-50 focus:placeholder:opacity-0"
+                name="title"
+                value={title}
+                onChange={(e)=> setTitle(e.target.value)}
               />
               <textarea
                 rows={10}
@@ -47,6 +86,9 @@ const Blogs = ({ onShowNews }) => {
                 style={{ width: "clamp(15rem,25cqi,45rem)" }}
                 className="border-b-2 border-b-[#b88cfe] py-8 text-xl text-highlight outline-none
             placeholder:text-xl placeholder:text-[#b88efc] placeholder:opacity-50 focus:placeholder:opacity-0 resize-none"
+              name="content"
+              value={content}
+              onChange={(e)=>setContent(e.target.value)}
               ></textarea>
               <button
                 type="submit"
