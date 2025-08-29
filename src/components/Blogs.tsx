@@ -1,5 +1,7 @@
 import userImage from "../assets/images/user.jpg";
 import bgImage from "../assets/images/bg.jpg";
+import noImage from "../assets/images/no-img.png";
+
 import { useState } from "react";
 const Blogs = ({ onShowNews, setBlogs }) => {
   const [showPostForm, setShowForm] = useState(false);
@@ -20,7 +22,7 @@ const Blogs = ({ onShowNews, setBlogs }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBlog = {
-      image,
+      image: image || noImage,
       title,
       content,
     };

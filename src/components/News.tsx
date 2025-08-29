@@ -268,7 +268,7 @@ const News: React.FC = ({ onShowBlogs,blogs }) => {
               {blogs.map((blog,index)=>(
               <div key={index} className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
                 <img
-                  src={blog.image}
+                  src={blog.image || noImage}
                   alt={blog.title}
                   className="h-full w-full object-cover rounded-2xl opacity-50"
                 />
