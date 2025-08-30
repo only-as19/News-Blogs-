@@ -8,7 +8,7 @@ const Blogs = ({ onShowNews, setBlogs }) => {
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const [isFormSubmit,setIsFormSubmit] = useState(false)
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -31,6 +31,7 @@ const Blogs = ({ onShowNews, setBlogs }) => {
     setTitle("");
     setContent("");
     setShowForm(false);
+    setIsFormSubmit(true)
   };
 
   return (
@@ -98,13 +99,21 @@ const Blogs = ({ onShowNews, setBlogs }) => {
             </form>
           </div>
         ) : (
-          <button
+          isFormSubmit ? (
+            <h1
+              className="uppercase main-bg text-5xl bg-clip-text text-transparent"
+              style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
+            >
+              Post Submitted!
+            </h1>
+          ) :
+          (<button
             className="main-bg aspect-4/1 text-3xl rounded-[5rem] font-bold cursor-pointer uppercase text-shadow-2xs active:translate-y-1"
             style={{ width: "clamp(15rem,16cqi,30rem)" }}
             onClick={() => setShowForm(true)}
           >
             Create a new Post
-          </button>
+          </button>)
         )}
 
         <button
