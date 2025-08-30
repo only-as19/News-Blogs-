@@ -79,7 +79,7 @@ const Calender: React.FC = () => {
           ))
         }
         {[...Array(daysInMonth).keys()].map(day=>(
-           <span key={day+1} className={` w-[calc(100%/7)]  flex justify-center aspect-square items-center cursor-pointer ${day+1 === currentDate.getDay()  && currnetMonth === currentDate.getMonth() && currnetYear === currentDate.getFullYear() ? "text-2xl main-bg text-white rounded-full":"text-sm text-zinc-500"}`}>
+           <span key={day+1} className={` w-[calc(100%/7)]  flex justify-center aspect-square items-center cursor-pointer ${day+1 === currentDate.getDay()  && currnetMonth === currentDate.getMonth() && currnetYear === currentDate.getFullYear() ? "text-2xl bg-gradient-to-r from-rose-500 to-purple-600 text-white rounded-full":"text-sm text-zinc-500"}`}>
           {day+1}
         </span>
         ))}

@@ -212,7 +212,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost }) => {
                 <div
                   key={index}
                   className="h-full w-full min-h-60 rounded-2xl relative "
-                  onClick={() => handleArticleClick(headline)}
+                  onClick={() => handleArticleClick(article)}
                 >
                   <img
                     src={article.image || noImage}
@@ -266,7 +266,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost }) => {
             <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
             <div className="flex flex-wrap gap-5 p-5 justify-between">
               {blogs.map((blog,index)=>(
-              <div key={index} className="flex-[0_1_calc(50%-0.6rem)] rounded-2xl relative group">
+              <div key={index} className="flex-[0_1_calc(49%-0.6rem)] rounded-2xl relative group">
                 <img
                   src={blog.image || noImage}
                   alt={blog.title}
