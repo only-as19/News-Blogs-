@@ -20,11 +20,18 @@ const App:React.FC  = ()=> {
     setShowBlogs(true)
   }
 
+  const removePost = (post)=>{
+    setBlogs(prevposts => {
+      const filtered = prevposts.filter(prevpost => prevpost.title !== post.title)
+      return filtered
+    })
+  }
+
   return (
     <div className="main-bg w-full h-screen grid place-items-center text-white">
       <div className=" w-[95vw] h-[95vmin] bg-main-bg rounded-xl shadows">
-        {showNews && <News onShowBlogs={handleShowBlogs} blogs={blogs}/>}
-        {showBlogs && <Blogs onShowNews={handleShowNews} setBlogs={addNewBlogs}/>}
+        {showNews && <News onShowBlogs={handleShowBlogs} blogs={blogs} onRemovePost={removePost}/>}
+        {showBlogs && <Blogs onShowNews={handleShowNews} setBlogs={addNewBlogs} />}
       </div>
     </div>
   )

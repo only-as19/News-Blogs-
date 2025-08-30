@@ -21,7 +21,7 @@ const categories = [
   "nation",
 ];
 
-const News: React.FC = ({ onShowBlogs,blogs }) => {
+const News: React.FC = ({ onShowBlogs,blogs, onRemovePost }) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
   const [selecetedCategory, setSelecetedCategory] = useState("general");
@@ -279,7 +279,9 @@ const News: React.FC = ({ onShowBlogs,blogs }) => {
                   <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
                     <i className="bxr  bx-edit"></i>
                   </button>
-                  <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 ">
+                  <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 "
+                  onClick={()=>onRemovePost(blog)}
+                  >
                     <i className="bxr  bx-x-circle"></i>
                   </button>
                 </div>
