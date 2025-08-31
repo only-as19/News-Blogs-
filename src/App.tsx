@@ -6,7 +6,13 @@ const App:React.FC  = ()=> {
   const[showBlogs,setShowBlogs] = useState(false)
   const[blogs,setBlogs] = useState([])
 
-
+  const updateBlog = (editingBlog,i)=>{
+    setBlogs(prevBlogs =>{
+      prevBlogs.map((blog,index)=>{
+        i===index ? editingBlog: blog
+      })
+    })
+  }
   const addNewBlogs = (newBlog)=>{
     setBlogs(prevBlogs => [...prevBlogs, newBlog])
   }

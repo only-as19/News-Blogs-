@@ -94,7 +94,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost }) => {
   return (
     <div className="text-regular h-full w-full flex flex-col justify-between gap-y-8">
       <header className="w-full min-h-28 bg-bg-black-2 rounded-t-2xl flex justify-between px-16 items-center">
-        <h1 className="text-[5rem] tracking-tight">NEWS & BLOGS</h1>
+        <h1 className="text-[5rem] tracking-tight">The Open Diary</h1>
         <div className="relative">
           <form onSubmit={handleSearch}>
             <input
@@ -297,7 +297,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost }) => {
       </div>
       <footer className="bg-bg-black-2 min-h-20 rounded-b-2xl flex items-center justify-between px-16">
         <p className="text-xl font-light">
-          <span className="font-bold text-[2rem]">News & Blogs</span>
+          <span className="font-bold text-[2rem]">The Open Diary</span>
         </p>
         <p className="text-xl font-light">
           &copy; All rights reserved by codes and words.
