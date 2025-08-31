@@ -3,12 +3,15 @@ import bgImage from "../assets/images/bg.jpg";
 import noImage from "../assets/images/no-img.png";
 
 import { useState } from "react";
-const Blogs = ({ onShowNews, setBlogs }) => {
+const Blogs = ({ onShowNews, setBlogs,onUpdateBlog }) => {
   const [showPostForm, setShowForm] = useState(false);
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isFormSubmit,setIsFormSubmit] = useState(false)
+  const [editingBlog,setEditingBlog] = useState(null)
+
+
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
@@ -19,6 +22,15 @@ const Blogs = ({ onShowNews, setBlogs }) => {
     }
   };
 
+  const handleEdit = (blog,index)=>{
+    setEditingBlog({...blog,index})
+    setTitle(blog.title)
+    setImage(image)
+    setContent(content)
+    setIsFormSubmit(false)
+    setShowForm(true)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBlog = {
@@ -26,6 +38,8 @@ const Blogs = ({ onShowNews, setBlogs }) => {
       title,
       content,
     };
+
+
     setBlogs(newBlog);
     setImage(null);
     setTitle("");

@@ -36,8 +36,10 @@ const App:React.FC  = ()=> {
   return (
     <div className="main-bg w-full h-screen grid place-items-center text-white">
       <div className=" w-[95vw] h-[95vmin] bg-main-bg rounded-xl shadows">
-        {showNews && <News onShowBlogs={handleShowBlogs} blogs={blogs} onRemovePost={removePost}/>}
-        {showBlogs && <Blogs onShowNews={handleShowNews} setBlogs={addNewBlogs} />}
+        {showNews && <News onShowBlogs={handleShowBlogs} blogs={blogs} onRemovePost={removePost} onupdatePost={(blogs,index)=>{
+          handleShowBlogs()
+        }}/>}
+        {showBlogs && <Blogs onShowNews={handleShowNews} setBlogs={addNewBlogs} onUpdateBlog={updateBlog} />}
       </div>
     </div>
   )
