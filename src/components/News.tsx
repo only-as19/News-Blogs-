@@ -7,7 +7,6 @@ import userImage from "../assets/images/user.jpg";
 import noImage from "../assets/images/no-img.png";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import blog1 from "../assets/images/blog1.jpg";
 
 const categories = [
   "general",
@@ -21,7 +20,7 @@ const categories = [
   "nation",
 ];
 
-const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatepost }) => {
+const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
   const [selecetedCategory, setSelecetedCategory] = useState("general");
@@ -34,11 +33,11 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatepost }) => {
 
   useEffect(() => {
     const fetchNews = async () => {
-      let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      // let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
 
-      if (searchQuery) {
-        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
-      }
+      // if (searchQuery) {
+      //   url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      // }
 
       const response = await axios.get(url);
 
@@ -277,7 +276,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatepost }) => {
                 </h3>
                 <div className="absolute top-4 right-4 flex justify-center gap-x-4 ">
                   <button className="text-4xl opacity-0 invisible  group-hover:opacity-100 group-hover:visible transition-all duration-300 "
-                  onClick={()=>onUpdatepost(blog,index)}
+                  onClick={()=>onUpdatePost(blog,index)}
                   >
                     <i className="bxr  bx-edit"></i>
                   </button>

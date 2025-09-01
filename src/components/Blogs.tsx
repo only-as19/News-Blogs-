@@ -1,16 +1,30 @@
 import userImage from "../assets/images/user.jpg";
 import bgImage from "../assets/images/bg.jpg";
 import noImage from "../assets/images/no-img.png";
+import { useEffect, useState } from "react";
 
-import { useState } from "react";
-const Blogs = ({ onShowNews, setBlogs,onUpdateBlog }) => {
+const Blogs = ({
+  onShowNews,
+  setBlogs,
+  onUpdateBlog,
+  editingBlog,
+  onClearBlog,
+}) => {
   const [showPostForm, setShowForm] = useState(false);
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [isFormSubmit,setIsFormSubmit] = useState(false)
-  const [editingBlog,setEditingBlog] = useState(null)
+  const [isFormSubmit, setIsFormSubmit] = useState(false);
 
+  useEffect(() => {
+    if (editingBlog) {
+      setShowForm(true);
+      setTitle(editingBlog.title);
+      setImage(editingBlog.image);
+      setContent(editingBlog.content);
+      setIsFormSubmit(false);
+    }
+  }, []);
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -22,15 +36,6 @@ const Blogs = ({ onShowNews, setBlogs,onUpdateBlog }) => {
     }
   };
 
-  const handleEdit = (blog,index)=>{
-    setEditingBlog({...blog,index})
-    setTitle(blog.title)
-    setImage(image)
-    setContent(content)
-    setIsFormSubmit(false)
-    setShowForm(true)
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newBlog = {
@@ -39,13 +44,17 @@ const Blogs = ({ onShowNews, setBlogs,onUpdateBlog }) => {
       content,
     };
 
-
-    setBlogs(newBlog);
+    if (editingBlog !== null) {
+      onUpdateBlog(newBlog, editingBlog.index);
+      onClearBlog();
+    } else {
+      setBlogs(newBlog);
+    }
     setImage(null);
     setTitle("");
     setContent("");
     setShowForm(false);
-    setIsFormSubmit(true)
+    setIsFormSubmit(true);
   };
 
   return (
@@ -112,22 +121,21 @@ const Blogs = ({ onShowNews, setBlogs,onUpdateBlog }) => {
               </button>
             </form>
           </div>
+        ) : isFormSubmit ? (
+          <h1
+            className="uppercase main-bg text-5xl bg-clip-text text-transparent"
+            style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
+          >
+            Post Submitted!
+          </h1>
         ) : (
-          isFormSubmit ? (
-            <h1
-              className="uppercase main-bg text-5xl bg-clip-text text-transparent"
-              style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
-            >
-              Post Submitted!
-            </h1>
-          ) :
-          (<button
+          <button
             className="main-bg aspect-4/1 text-3xl rounded-[5rem] font-bold cursor-pointer uppercase text-shadow-2xs active:translate-y-1"
             style={{ width: "clamp(15rem,16cqi,30rem)" }}
             onClick={() => setShowForm(true)}
           >
             Create a new Post
-          </button>)
+          </button>
         )}
 
         <button
