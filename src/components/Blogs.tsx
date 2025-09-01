@@ -73,7 +73,7 @@ const Blogs = ({
         {showPostForm ? (
           <div className="flex items-center gap-y-20 flex-col">
             <h1
-              className="uppercase main-bg text-5xl bg-clip-text text-transparent"
+              className="uppercase main-bg text-5xl bg-clip-text text-transparent font-comfortaa"
               style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
             >
               New Post
@@ -98,7 +98,7 @@ const Blogs = ({
                 type="text"
                 placeholder="Add Title ( Max 60 characters)"
                 style={{ width: "clamp(15rem,25cqi,45rem)" }}
-                className="border-b-2 border-b-[#b88cfe] py-8 text-3xl text-highlight outline-none placeholder:text-2xl placeholder:text-[#b88efc] placeholder:opacity-50 focus:placeholder:opacity-0"
+                className="border-b-2 border-b-[#b88cfe] py-8 font-comfortaa text-3xl text-highlight outline-none placeholder:text-2xl placeholder:text-[#b88efc] placeholder:opacity-50 focus:placeholder:opacity-0"
                 name="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -107,7 +107,7 @@ const Blogs = ({
                 rows={10}
                 placeholder="Add Text"
                 style={{ width: "clamp(15rem,25cqi,45rem)" }}
-                className="border-b-2 border-b-[#b88cfe] py-8 text-xl text-highlight outline-none
+                className="border-b-2 border-b-[#b88cfe] font-comfortaa py-8 text-xl text-highlight outline-none
             placeholder:text-xl placeholder:text-[#b88efc] placeholder:opacity-50 focus:placeholder:opacity-0 resize-none"
                 name="content"
                 value={content}
@@ -139,7 +139,7 @@ const Blogs = ({
         )}
 
         <button
-          className="absolute top-12 right-10 flex justify-center items-center text-5xl cursor-pointer"
+          className="absolute top-12 right-10 flex justify-center items-center font-bebas text-5xl cursor-pointer"
           onClick={onShowNews}
         >
           <span>Back</span>

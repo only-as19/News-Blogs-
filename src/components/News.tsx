@@ -124,11 +124,11 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
               alt=""
               className="w-20 object-cover rounded-[50%] aspect-1/1"
             />
-            <p className="text-xl text-gray-200">Asad's Blog</p>
+            <p className="text-xl text-gray-200 font-comfortaa">Asad's Blog</p>
           </div>
           <nav className="w-full h-[calc(80%-2rem)] bg-bg-black-2 rounded-2xl flex flex-col gap-y-8 p-6">
             <h1
-              className="text-gray-200  text-4xl font-bold"
+              className="text-gray-200  text-4xl font-bold font-bebas"
               style={{ fontSize: "clamp(1.2rem,2.2cqi,2.7rem)" }}
             >
               Categories
@@ -137,7 +137,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
               {categories.map((category, index) => (
                 <a
                   href="#"
-                  className="text-[1rem] font-semibold uppercase tracking-[0.1rem]"
+                  className="text-[1rem] uppercase tracking-[0.1rem]"
                   key={index}
                   onClick={(e) => handleCategoryClick(e, category)}
                 >
@@ -180,7 +180,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
               <h2
                 style={{ fontSize: "clamp(1rem,2cqi,2.5rem)" }}
                 className="absolute w-full
-             left-0 bottom-0 font-bold py-4 pr-12 pl-4 bg-black/25 text-gray-200 rounded-2xl"
+             left-0 bottom-0 font-bebas font-bold py-4 pr-12 pl-4 bg-black/25 text-gray-200 rounded-2xl"
               >
                 {headline.title}
                 {bookmark.find((mark) => mark.title === headline.title) ? (
@@ -218,7 +218,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
                     alt=""
                     className="h-full w-full block object-cover rounded-2xl"
                   />
-                  <h3 className="absolute bottom-0 left-0 py-4 pr-10 pl-4 text-lg font-bold bg-black/70">
+                  <h3 className="absolute bottom-0 left-0 py-4 pr-10 pl-4 font-bebas text-lg font-bold bg-black/70">
                     {article.title}
                     {bookmark.find((mark) => mark.title === article.title) ? (
                       <FontAwesomeIcon
@@ -262,7 +262,7 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
           style={{ width: "clamp(20rem,27cqi,28%)" }}
         >
           <div>
-            <h1 className="text-5xl text-highlight p-8 font-bold">My Blogs</h1>
+            <h1 className="text-5xl text-highlight p-8 font-bold font-bebas">My Blogs</h1>
             <div className="flex flex-wrap gap-5 p-5 justify-between">
               {blogs.map((blog,index)=>(
               <div key={index} className="flex-[0_1_calc(49%-0.6rem)] rounded-2xl relative group">

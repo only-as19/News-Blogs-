@@ -15,7 +15,7 @@ const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) 
         onClick={onClose}>
           <FontAwesomeIcon icon={faXmark} />
         </span>
-        <h2 className="text-6xl font-bold mb-8 text-gray-200">Bookmarked News</h2>
+        <h2 className="text-6xl font-bold mb-8 text-gray-200 font-bebas">Bookmarked News</h2>
         
         {Bookmark.length > 0 ? (
           Bookmark.map((bookmark, index) => (
@@ -26,7 +26,7 @@ const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) 
                 onSelectedArticle(bookmark)}}>
                 <img src={bookmark.image} alt="" 
                 className="h-28 w-28 rounded-2xl mr-4 object-cover"/>
-                <h3 className="text-3xl font-semibold tracking-wide">
+                <h3 className="text-3xl font-semibold tracking-wide font-comfortaa">
                    {bookmark.title}
                 </h3>
                 <span>

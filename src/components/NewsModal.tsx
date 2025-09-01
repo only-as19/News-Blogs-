@@ -18,12 +18,12 @@ const NewsModal: React.FC = ({ show, article, onClose }) => {
               alt=""
               className="w-full object-cover h-auto max-h-[30rem] border-1 rounded-2xl"
             />
-            <h2 className="text-[2rem] font-bold mt-8">
+            <h2 className="text-[2rem] font-bold mt-8 font-bebas">
               {article.title}
             </h2>
-            <p className="text-xl text-gray-400 mt-4">Source: {article
+            <p className="text-xl text-gray-400 mt-4 font-comfortaa">Source: {article
               .source.name}</p>
-            <p className="text-xl text-gray-400 mt-4">{new Date(article.publishedAt).toLocaleString('en-us',{
+            <p className="text-xl text-gray-400 mt-4 font-comfortaa">{new Date(article.publishedAt).toLocaleString('en-us',{
               month:'short',
               day:'2-digit',
               year:'numeric',

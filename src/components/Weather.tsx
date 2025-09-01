@@ -60,7 +60,7 @@ const Weather: React.FC = () => {
             className="text-4xl text-highlight"
             icon={faLocationDot}
           />
-          <div className="text-3xl text-highlight font-bold">{data.name}</div>
+          <div className="text-3xl text-highlight font-bold font-comfortaa">{data.name}</div>
         </div>
         <div className="relative">
           <input
@@ -92,8 +92,8 @@ const Weather: React.FC = () => {
               className="w-20 h-20"
             />
           ) : null}
-          <div>{data.weather ? data.weather[0].main : null}</div>
-          <div>{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
+          <div className="font-comfortaa">{data.weather ? data.weather[0].main : null}</div>
+          <div className="font-comfortaa">{data.main ? `${Math.floor(data.main.temp)}°` : null}</div>
         </div>
       )}
     </div>
