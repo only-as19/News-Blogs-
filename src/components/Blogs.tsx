@@ -3,15 +3,29 @@ import bgImage from "../assets/images/bg.jpg";
 import noImage from "../assets/images/no-img.png";
 import { useEffect, useState } from "react";
 
-const Blogs = ({
+interface Blog {
+  title: string;
+  image?: string;
+  content?:string;
+}
+
+interface newProps{
+  onShowNews: ()=> void
+  setBlogs: (addNewBlogs: Blog) => void
+  onUpdateBlog: (editingBlog:Blog, index: number)=> void
+  editingBlog: (Blog & {index: number}) | null
+  onClearBlog : ()=> void
+}
+
+const Blogs:React.FC<newProps> = ({
   onShowNews,
   setBlogs,
   onUpdateBlog,
   editingBlog,
   onClearBlog,
 }) => {
-  const [showPostForm, setShowForm] = useState(false);
-  const [image, setImage] = useState(null);
+  const [showPostForm, setShowForm] = useState<boolean>(false);
+  const [image, setImage] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isFormSubmit, setIsFormSubmit] = useState(false);
@@ -20,25 +34,25 @@ const Blogs = ({
     if (editingBlog) {
       setShowForm(true);
       setTitle(editingBlog.title);
-      setImage(editingBlog.image);
-      setContent(editingBlog.content);
+      setImage(editingBlog.image || null);
+      setContent(editingBlog.content || "");
       setIsFormSubmit(false);
     }
   }, [editingBlog]);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result);
+        setImage(reader.result as string);
       };
       reader.readAsDataURL(e.target.files[0]);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newBlog = {
+    const newBlog: Blog = {
       image: image || noImage,
       title,
       content,

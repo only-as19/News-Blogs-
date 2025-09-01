@@ -1,20 +1,27 @@
 import { News , Blogs } from "./components"
 import { useState } from "react"
 
-const App:React.FC  = ()=> {
-  const[showNews,setShowNews] = useState(true)
-  const[showBlogs,setShowBlogs] = useState(false)
-  const[blogs,setBlogs] = useState([])
-  const[editingBlog,setEditingBlog] = useState(null)
+interface Blog {
+  title: string;
+  image?: string;
+  content?:string;
+}
+type BlogWithIndex = Blog & { index: number };
 
-  const updateBlog = (editingBlog,i)=>{
+const App:React.FC  = ()=> {
+  const[showNews,setShowNews] = useState<boolean>(true)
+  const[showBlogs,setShowBlogs] = useState<boolean>(false)
+  const[blogs,setBlogs] = useState<Blog[]>([])
+ const [editingBlog, setEditingBlog] = useState<BlogWithIndex | null>(null);
+
+  const updateBlog = (editingBlog:Blog,i:number)=>{
     setBlogs(prevBlogs =>
       prevBlogs.map((blog,index)=>
         i===index ? editingBlog: blog
       )
     )
   }
-  const addNewBlogs = (newBlog)=>{
+  const addNewBlogs = (newBlog:Blog)=>{
     setBlogs(prevBlogs => [...prevBlogs, newBlog])
   }
 
@@ -23,11 +30,11 @@ const App:React.FC  = ()=> {
     setShowBlogs(false)
   }
 
-  const handleEditing = (blog,index)=>{
-    setEditingBlog({...blog,index})
-    setShowNews(false)
-    setShowBlogs(true)
-  }
+  const handleEditing = (blog: Blog, index: number) => {
+  setEditingBlog({ ...blog, index }); // ✅ CORRECT
+  setShowNews(false);
+  setShowBlogs(true);
+};
 
   const clearEditPost = ()=>{
     setEditingBlog(null)
@@ -38,7 +45,7 @@ const App:React.FC  = ()=> {
     setShowBlogs(true)
   }
 
-  const removePost = (post)=>{
+  const removePost = (post:Blog)=>{
     setBlogs(prevposts => {
       const filtered = prevposts.filter(prevpost => prevpost.title !== post.title)
       return filtered

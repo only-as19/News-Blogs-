@@ -35,7 +35,7 @@ interface Article {
 interface Blog {
   title: string;
   image?: string;
-  content?:String;
+  content?:string;
 }
 
 interface newProps {
