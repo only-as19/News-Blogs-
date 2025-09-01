@@ -20,6 +20,31 @@ const categories = [
   "nation",
 ];
 
+interface Artile {
+  title: string
+  image?: string
+  description?: string
+  url?: string
+  publishedAt?: string
+  source?:{
+    name:string
+    url:string
+  }
+}
+
+interface Blog {
+  title: string;
+  image?: string;
+  content?:String;
+}
+
+interface newProps {
+  onShowBlogs: ()=> void;
+  blogs: Blog[];
+  onRemovePost: (blog: Blog) => void
+  onUpdatePost: (blog: Blog , index: number) => void
+}
+
 const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
   const [headline, setHeadline] = useState(null);
   const [news, setNews] = useState([]);
