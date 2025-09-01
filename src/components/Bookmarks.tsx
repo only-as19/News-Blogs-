@@ -1,9 +1,29 @@
 import {faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import {faXmark} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import demoImage from '../assets/images/demo.jpg'
 
-const Bookmarks = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) => {
+
+interface Article {
+  title: string
+  image?: string
+  description?: string
+  url?: string
+  publishedAt?: string
+  source?:{
+    name:string
+    url:string
+  }
+}
+
+interface newProps{
+  show:boolean
+  onClose:()=> void
+  Bookmark: Article[]
+  onSelectedArticle: (article : Article)=> void
+  DeleteBookmark: (article:Article) => void
+}
+
+const Bookmarks:React.FC<newProps> = ({show, onClose, Bookmark,onSelectedArticle, DeleteBookmark}) => {
   if(!show){
     return null
   }
