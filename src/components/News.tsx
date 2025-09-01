@@ -6,7 +6,7 @@ import { faBookmark as BookmarkRegular } from "@fortawesome/free-regular-svg-ico
 import userImage from "../assets/images/user.jpg";
 import noImage from "../assets/images/no-img.png";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const categories = [
   "general",
@@ -20,7 +20,7 @@ const categories = [
   "nation",
 ];
 
-interface Artile {
+interface Article {
   title: string
   image?: string
   description?: string
@@ -45,38 +45,37 @@ interface newProps {
   onUpdatePost: (blog: Blog , index: number) => void
 }
 
-const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
-  const [headline, setHeadline] = useState(null);
-  const [news, setNews] = useState([]);
-  const [selecetedCategory, setSelecetedCategory] = useState("general");
-  const [searchInput, setSearchInput] = useState("");
-  const [searchQuery, serSearchQuery] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [selecetedArticle, setSelecetedArticle] = useState(null);
-  const [bookmark, setBookmark] = useState([]);
-  const [showBookmark, setShowBookmark] = useState(false);
+const News: React.FC<newProps> = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
+  const [headline, setHeadline] = useState<Article | null >(null);
+  const [news, setNews] = useState<Article[]>([]);
+  const [selecetedCategory, setSelecetedCategory] = useState<string>("general");
+  const [searchInput, setSearchInput] = useState<string>("");
+  const [searchQuery, serSearchQuery] = useState<string>("");
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selecetedArticle, setSelecetedArticle] = useState<Article | null>(null);
+  const [bookmark, setBookmark] = useState<Article[]>([]);
+  const [showBookmark, setShowBookmark] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchNews = async () => {
-      // let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      let url = `https://gnews.io/api/v4/top-headlines?category=${selecetedCategory}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
 
-      // if (searchQuery) {
-      //   url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
-      // }
+      if (searchQuery) {
+        url = `https://gnews.io/api/v4/search?q=${searchQuery}&lang=en&apikey=61b3b5fe34ff38b97deef3de94b6590c `;
+      }
 
-      const response = await axios.get(url);
+      const response = await axios.get<{articles: Article[]}>(url);
 
-      const fetchedNews = response.data.articles;
+      const fetchedNews:Article[] =  response.data.articles;
 
-      fetchedNews.forEach((article) => {
+      fetchedNews.forEach((article:Article) => {
         if (!article.image) {
           article.image = noImage;
         }
       });
 
-      const savedBookmarks =
-        JSON.parse(localStorage.getItem("bookmarks")) || [];
-      setBookmark(savedBookmarks);
+      const savedBookmarks: Article[] = JSON.parse(localStorage.getItem("bookmarks") ?? "[]");
+setBookmark(savedBookmarks);
 
       setHeadline(fetchedNews[0]);
 
@@ -86,24 +85,24 @@ const News: React.FC = ({ onShowBlogs,blogs, onRemovePost,onUpdatePost }) => {
     fetchNews();
   }, [selecetedCategory, searchQuery]);
 
-  const handleCategoryClick = (e, category) => {
+  const handleCategoryClick = (e: React.MouseEvent<HTMLAnchorElement>, category: string) => {
     e.preventDefault();
     setSelecetedCategory(category);
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     serSearchQuery(searchInput);
     setSearchInput("");
   };
 
-  const handleArticleClick = (article) => {
+  const handleArticleClick = (article: Article) => {
     setSelecetedArticle(article);
     setShowModal(true);
   };
 
-  const handleBookmarkClick = (article) => {
-    setBookmark((prevBookmark) => {
+  const handleBookmarkClick = (article: Article) => {
+    setBookmark((prevBookmark: Article[]) => {
       const updatedBookmark = prevBookmark.find(
         (bookmark) => bookmark.title === article.title
       )
