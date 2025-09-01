@@ -1,7 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-const NewsModal: React.FC = ({ show, article, onClose }) => {
+interface Article {
+  title: string;
+  image?: string;
+  description?: string;
+  url?: string;
+  content?: string;
+  publishedAt?: string;
+  source?: {
+    name: string;
+    url: string;
+  };
+}
+interface newProps {
+  show: boolean;
+  article: Article | null;
+  onClose: () => void;
+}
+const NewsModal: React.FC<newProps> = ({ show, article, onClose }) => {
   if (!show) {
     return null;
   }
@@ -21,18 +38,21 @@ const NewsModal: React.FC = ({ show, article, onClose }) => {
             <h2 className="text-[2rem] font-bold mt-8 font-bebas">
               {article.title}
             </h2>
-            <p className="text-xl text-gray-400 mt-4 font-comfortaa">Source: {article
-              .source.name}</p>
-            <p className="text-xl text-gray-400 mt-4 font-comfortaa">{new Date(article.publishedAt).toLocaleString('en-us',{
-              month:'short',
-              day:'2-digit',
-              year:'numeric',
-              hour:'2-digit',
-              minute:'2-digit'
-            })}</p>
-            <p className="text-2xl leading-11 mt-8">
-             {article.content}
+            <p className="text-xl text-gray-400 mt-4 font-comfortaa">
+              Source: {article.source?.name}
             </p>
+            <p className="text-xl text-gray-400 mt-4 font-comfortaa">
+              {article.publishedAt
+                ? new Date(article.publishedAt).toLocaleString("en-US", {
+                    month: "short",
+                    day: "2-digit",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })
+                : "Unknown"}
+            </p>
+            <p className="text-2xl leading-11 mt-8">{article.content}</p>
             <a
               href={article.url}
               target="_blank"
