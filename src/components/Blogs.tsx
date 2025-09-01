@@ -142,7 +142,10 @@ const Blogs = ({
 
         <button
           className="absolute top-12 right-10 flex justify-center items-center font-bebas text-5xl cursor-pointer"
-          onClick={onShowNews}
+          onClick={()=>{
+            onShowNews()
+            onClearBlog()
+          }}
         >
           <span>Back</span>
           <span className="flex items-center">
