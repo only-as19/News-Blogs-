@@ -15,7 +15,7 @@ const Blogs = ({
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [isFormSubmit, setIsFormSubmit] = useState(false);
-
+  const [wasUpdating,setWasUpdating] = useState(false)
   useEffect(() => {
     if (editingBlog) {
       setShowForm(true);
@@ -24,7 +24,7 @@ const Blogs = ({
       setContent(editingBlog.content);
       setIsFormSubmit(false);
     }
-  }, []);
+  }, [editingBlog]);
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -47,8 +47,10 @@ const Blogs = ({
     if (editingBlog !== null) {
       onUpdateBlog(newBlog, editingBlog.index);
       onClearBlog();
+      setWasUpdating(true)
     } else {
       setBlogs(newBlog);
+      setWasUpdating(false)
     }
     setImage(null);
     setTitle("");
@@ -76,7 +78,7 @@ const Blogs = ({
               className="uppercase main-bg text-5xl bg-clip-text text-transparent font-comfortaa"
               style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
             >
-              New Post
+              {editingBlog ? (<>Update Post</>):(<>New Post</>)}
             </h1>
             <form className="flex flex-col gap-y-12" onSubmit={handleSubmit}>
               <div>
@@ -115,18 +117,18 @@ const Blogs = ({
               ></textarea>
               <button
                 type="submit"
-                className="h-18 text-2xl text-shadow-2xs uppercase tracking-wide font-bold main-bg rounded-[5rem] cursor-pointer active:translate-y-2"
+                className="h-18 text-2xl text-shadow-2xs uppercase tracking-wider font-bold main-bg rounded-[5rem] cursor-pointer active:translate-y-2"
               >
-                Submit
+                {editingBlog ? (<>Update</>): (<>Submit</>)}
               </button>
             </form>
           </div>
         ) : isFormSubmit ? (
           <h1
-            className="uppercase main-bg text-5xl bg-clip-text text-transparent"
+            className="uppercase main-bg text-5xl bg-clip-text text-transparent font-comfortaa"
             style={{ fontSize: "clamp(2rem,5cqi,6rem)" }}
           >
-            Post Submitted!
+            {wasUpdating ? (<>Post Updated!</>) : (<>Post Submitted!</>)}
           </h1>
         ) : (
           <button
