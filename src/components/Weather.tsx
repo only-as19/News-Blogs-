@@ -5,10 +5,23 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+interface WeatherData {
+  name?:string
+  main?:{
+    temp:number
+  }
+  weather?:{
+    main:string
+    icon:string
+  }[]
+  notFound?:boolean
+}
 const Weather: React.FC = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState<WeatherData>({});
   const [location, setLocation] = useState("");
 
+  
   useEffect(() => {
     const fetachDefaultLocation = async () => {
       const defaultLocation = "Karachi";
@@ -31,7 +44,7 @@ const Weather: React.FC = () => {
         setData(response.data);
         setLocation("");
       }
-    } catch (error) {
+    } catch (error:any) {
       if (error.response && error.response.status === 404) {
         setData({
           notFound: true,
@@ -42,13 +55,13 @@ const Weather: React.FC = () => {
     }
   };
 
-  const onKeyDown = (e)=>{
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>)=>{
     if(e.key==='Enter'){
       search()
     }
   }
 
-  const handleLocation = (e) => {
+  const handleLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocation(e.target.value);
   };
 
